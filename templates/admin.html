@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+  <script src="{{ url_for('static', filename='admin.js') }}"></script>
+<title>Admin Panel</title>
+</head>
+<body>
+
+<div class="confirm-overlay" id="confirm-overlay">
+  <div class="confirm-box">
+    <p>Delete <strong id="confirm-name"></strong>?<br>All spin history will be removed.</p>
+    <div class="confirm-actions">
+      <button class="btn" onclick="closeConfirm()">Cancel</button>
+      <form id="confirm-form" method="POST" action="/admin/delete" style="flex:1">
+        <input type="hidden" name="user_id" id="confirm-uid">
+        <button type="submit" class="btn btn-delete" style="width:100%">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="topbar">
+  <h1>ADMIN PANEL</h1>
+  <a href="/admin/stats">stats</a>
+  <a href="/admin/logout">logout</a>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Credits</th>
+      <th>Spins</th>
+      <th>Wins</th>
+      <th>Net</th>
+      <th>Adjust credits</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for u in users %}
+    <tr>
+      <td class="username">{{ u.username }}</td>
+      <td>{{ u.credits }}</td>
+      <td class="muted">{{ u.total_spins }}</td>
+      <td class="muted">
+        {% if u.total_spins > 0 %}{{ u.wins }}/{{ u.total_spins }}{% else %}—{% endif %}
+      </td>
+      <td class="{{ 'net-pos' if (u.total_won - u.total_bet) >= 0 else 'net-neg' }}">
+        {% if u.total_spins > 0 %}{{ u.total_won - u.total_bet }}{% else %}—{% endif %}
+      </td>
+      <td>
+        <form method="POST" action="/admin/credits" class="inline-form">
+          <input type="hidden" name="user_id" value="{{ u.id }}">
+          <input type="number" name="amount" class="credit-input" placeholder="+/−" required>
+          <button type="submit" class="btn btn-apply">Apply</button>
+        </form>
+      </td>
+      <td><a href="/admin/user/{{ u.id }}" class="btn btn-stats">Stats</a></td>
+      <td>
+        <button class="btn btn-delete"
+          onclick="openConfirm({{ u.id }}, '{{ u.username }}')">Delete</button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</body>
+</html>

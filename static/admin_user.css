@@ -1,0 +1,29 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #000; color: #0f0; font-family: monospace;
+  min-height: 100vh; padding: 40px 24px;
+  display: flex; flex-direction: column; align-items: center; gap: 28px;
+}
+
+.topbar {
+  width: 100%; max-width: 640px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+h1 { font-size: 1rem; letter-spacing: 4px; color: #0a0; }
+.topbar a { color: #060; font-size: 0.75rem; text-decoration: none; }
+.topbar a:hover { color: #0f0; }
+
+.summary { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+.stat-box {
+  border: 1px solid #0a0; border-radius: 6px;
+  padding: 14px 20px; text-align: center; min-width: 90px;
+  background: #020202;
+}
+.stat-box .label { font-size: 0.6rem; color: #060; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.stat-box .value { font-size: 1.3rem; color: #0f0; }
+
+.chart-wrap { width: 100%; max-width: 640px; }
+.chart-title { font-size: 0.65rem; color: #060; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+canvas { width: 100% !important; }
+
+.empty { color: #040; font-size: 0.85rem; }

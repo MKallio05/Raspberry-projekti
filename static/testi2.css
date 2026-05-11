@@ -1,0 +1,98 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #000; color: #0f0; font-family: monospace;
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 28px; padding: 50px 20px 20px;
+  }
+
+  .topbar {
+    position: fixed; top: 0; right: 0;
+    padding: 12px 20px; display: flex; gap: 20px; align-items: center;
+    font-size: 0.75rem;
+  }
+  .topbar span { color: #0a0; }
+  .topbar a { color: #060; text-decoration: none; }
+  .topbar a:hover { color: #0f0; }
+
+  h1 {
+    font-size: 1rem; letter-spacing: 6px; color: #0a0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 14px;
+  }
+
+  .cell {
+    width: 100px; height: 100px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.4rem;
+    background: #050505;
+    border: 1px solid #0a0;
+    border-radius: 8px;
+    transition: border-color 0.2s, background 0.2s;
+    color: #0c0;
+  }
+
+  .cell.win {
+    border-color: #0f0;
+    background: #001a00;
+    color: #0f0;
+  }
+
+  .stats {
+    display: flex; gap: 40px;
+    font-size: 0.8rem; color: #060;
+    letter-spacing: 3px; text-transform: uppercase;
+  }
+  .stats span { color: #0f0; font-size: 1.1rem; }
+
+  .controls { display: flex; gap: 12px; align-items: center; }
+
+  button {
+    font-family: monospace; font-size: 0.9rem;
+    padding: 9px 20px;
+    border: 1px solid #0a0;
+    border-radius: 4px;
+    background: #000; color: #0a0;
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s;
+    letter-spacing: 1px;
+  }
+  button:hover { background: #001a00; color: #0f0; border-color: #0f0; }
+  button:active { background: #002a00; }
+
+  #spin-btn {
+    background: #0a0; color: #000;
+    border-color: #0a0; padding: 9px 36px;
+    letter-spacing: 3px; font-size: 0.95rem;
+  }
+  #spin-btn:hover { background: #0f0; border-color: #0f0; color: #000; }
+  #spin-btn:disabled { background: #030; color: #050; border-color: #030; cursor: not-allowed; }
+
+  #result {
+    font-size: 0.85rem; color: #0f0;
+    letter-spacing: 2px; min-height: 1.1rem;
+  }
+
+  .history { width: 240px; }
+  .history-title {
+    font-size: 0.6rem; color: #060; letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .history-list { display: flex; flex-direction: column; gap: 5px; }
+  .history-item {
+    display: flex; justify-content: space-between;
+    font-size: 0.78rem; padding: 5px 10px;
+    border: 1px solid #0a0022;
+    border-left: 2px solid #030;
+    border-radius: 3px;
+    background: #020202;
+  }
+  .h-win  { color: #0f0; }
+  .h-loss { color: #040; }
+  .h-lines { color: #060; font-size: 0.72rem; }

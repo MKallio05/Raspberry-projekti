@@ -1,0 +1,44 @@
+ * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #000; color: #0f0; font-family: monospace;
+    min-height: 100vh; padding: 40px 24px;
+    display: flex; flex-direction: column; align-items: center; gap: 32px;
+  }
+
+  .topbar {
+    width: 100%; max-width: 720px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  h1 { font-size: 1rem; letter-spacing: 4px; color: #0a0; }
+  .topbar a { color: #060; font-size: 0.75rem; text-decoration: none; letter-spacing: 1px; }
+  .topbar a:hover { color: #0f0; }
+
+  .summary {
+    display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+    width: 100%; max-width: 720px;
+  }
+  .stat-box {
+    border: 1px solid #0a0; border-radius: 6px;
+    padding: 14px 20px; text-align: center; flex: 1; min-width: 100px;
+    background: #020202;
+  }
+  .stat-box .label { font-size: 0.6rem; color: #060; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .stat-box .value { font-size: 1.4rem; color: #0f0; }
+
+  .chart-wrap { width: 100%; max-width: 720px; }
+  .chart-title { font-size: 0.6rem; color: #060; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  canvas { width: 100% !important; }
+
+  .empty { color: #060; font-size: 0.85rem; letter-spacing: 1px; }
+
+  table { width: 100%; max-width: 720px; border-collapse: collapse; font-size: 0.8rem; }
+  th {
+    text-align: left; padding: 8px 12px; border-bottom: 1px solid #030;
+    color: #060; letter-spacing: 2px; text-transform: uppercase; font-weight: normal;
+  }
+  td { padding: 8px 12px; border-bottom: 1px solid #0a0011; }
+  tr:hover td { background: #020202; }
+  .u-name { color: #0f0; }
+  .u-muted { color: #060; }
+  .u-pos { color: #0f0; }
+  .u-neg { color: #040; }

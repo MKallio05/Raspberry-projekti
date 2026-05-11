@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin_user.css') }}">
+  <title>User Stats</title>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>{{ user.username }}</h1>
+  <a href="/admin">← back</a>
+</div>
+
+{% if summary.total_spins %}
+<div class="summary">
+  <div class="stat-box"><div class="label">Credits</div><div class="value">{{ user.credits }}</div></div>
+  <div class="stat-box"><div class="label">Spins</div><div class="value">{{ summary.total_spins }}</div></div>
+  <div class="stat-box"><div class="label">Wins</div><div class="value">{{ summary.wins }}</div></div>
+  <div class="stat-box"><div class="label">Losses</div><div class="value">{{ summary.losses }}</div></div>
+  <div class="stat-box"><div class="label">Total bet</div><div class="value">{{ summary.total_bet }}</div></div>
+  <div class="stat-box"><div class="label">Total won</div><div class="value">{{ summary.total_won }}</div></div>
+</div>
+
+<div class="chart-wrap">
+  <div class="chart-title">Credit balance over time</div>
+  <canvas id="balanceChart"></canvas>
+</div>
+
+{% else %}
+<div class="empty">No spins recorded yet.</div>
+{% endif %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+  const balanceData = {{ balance_data | safe }};
+</script>
+<script src="{{ url_for('static', filename='admin_user.js') }}"></script>
+
+</body>
+</html>
